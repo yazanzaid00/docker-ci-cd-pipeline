@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    image: ${DOCKER_USERNAME}/docker-ci-cd-pipeline:latest
+    container_name: docker-ci-cd-app
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - VERSION=1.0.0
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=300
+      - WATCHTOWER_LABEL_ENABLE=true
+      - WATCHTOWER_INCLUDE_RESTARTING=true
+    restart: unless-stopped

@@ -1,0 +1,17 @@
+{
+  "name": "docker-ci-cd-pipeline",
+  "version": "1.0.0",
+  "description": "CI/CD with GitHub Actions -> Docker Hub -> Watchtower auto-deploy",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "docker",
+    "ci-cd",
+    "github-actions",
+    "watchtower"
+  ],
+  "author": "",
+  "license": "MIT"
+}
